@@ -4,6 +4,7 @@ import { Card, CardContent } from './ui/card';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { Search, Calendar, Heart, MessageCircle } from 'lucide-react';
+import Image from 'next/image';
 
 interface RawInstagramPost {
   date_posted: string;
@@ -207,10 +208,12 @@ const InstagramViewer: React.FC = () => {
                           allowTransparency={true}
                         />
                       ) : post.photos ? (
-                        <img
+                        <Image
                           src={tryParseJSON(post.photos)?.[0]}
                           alt="Post"
                           className="w-full h-full object-cover rounded-lg"
+                          width={500}
+                          height={500}
                         />
                       ) : null}
                     </div>
@@ -223,7 +226,7 @@ const InstagramViewer: React.FC = () => {
           <Card>
             <CardContent>
               <p className="text-center text-gray-600">
-                Keine Posts gefunden für {isHashtagSearch ? 'Hashtag' : 'Suchbegriff'} "{searchTerm}"
+                Keine Posts gefunden für {isHashtagSearch ? 'Hashtag' : 'Suchbegriff'} &quot;{searchTerm}&quot;
               </p>
             </CardContent>
           </Card>
